@@ -1,8 +1,10 @@
+// Integrantes: Pablo Troncoso, Romina Valenzuela
+
 // Construccion patron modulo
 let iife = (function () {
     // Función privada para insertar el video en el documento HTML
     // CReo 2 Funciones, publico y otra privada (sumanumero, es un Obj.)
-    function privada(url, id) {
+    function privada(url, id) { 
       console.log("Url: ", url);
       console.log("Id: ", id);
       id.setAttribute("src", url);
@@ -22,9 +24,17 @@ let iife = (function () {
   
   class Multimedia {
     constructor(url) {
-      this.url = url;
+      this._url = url;
     }
   
+    //Función closure para poner privada la url (hay que ponerla privada y aparte con un closure)
+    //el concepto de closure es que es un funcion que no tiene variables
+    //entonces ella no tiene variables pero puede ser una funcion que este declarada fuera de ella
+    //esto es un concepto de closure basado en su estructura
+    get url() {
+      return this._url;
+    }
+      
     setInicio() {
       return "Este método es para realizar un cambio en la URL del video";
     }
@@ -48,7 +58,7 @@ let iife = (function () {
   //Vamos a instanciar una clase
   const idMusica = document.getElementById("musica");
   let musica = new Reproductor(
-    "https://www.youtube.com/embed/5PSNL1qE6VY",
+    "https://www.youtube.com/embed/nNgIMdc6wqU?si=Ch07spmESuxnhJMv",
     idMusica
   );
   
@@ -56,7 +66,7 @@ let iife = (function () {
   
   const idPelicula = document.getElementById("peliculas");
   let pelicula = new Reproductor(
-    "https://www.youtube.com/embed/5PSNL1qE6VY",
+    "https://www.youtube.com/embed/vKQi3bBA1y8?si=wlNUnK-SFYMOVXTg",
     idPelicula
   );
   
@@ -65,9 +75,10 @@ let iife = (function () {
   
   const idSeries = document.getElementById("series");
   let series = new Reproductor(
-    "https://www.youtube.com/embed/5PSNL1qE6VY",
+    "https://www.youtube.com/embed/NNRQaDkQ7F8?si=EFs7SexYrmJIac05",
     idSeries
   );
   
   series.playMultimedia();
+  // series.setInicio(100);
   
